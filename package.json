@@ -1,0 +1,12 @@
+{
+  "name": "blp2",
+  "version": "0.0.0",
+  "engines": {"node": "~0.4.7"},
+  "dependencies": {
+    "express": "~2.3.3",
+    "socket.io": "~0.6.17"
+  },
+  "devDependencies": {
+    "vows": "~0.5.8"
+  }
+}
