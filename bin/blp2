@@ -1,0 +1,8 @@
+#!/usr/bin/env node
+
+var path = require('path');
+
+var command = process.argv[2] || 'server';
+var commandFile = path.resolve(__dirname, '../lib/commands', command);
+
+require(commandFile).run();
