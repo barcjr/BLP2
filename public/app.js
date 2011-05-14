@@ -10,8 +10,9 @@ Ext.application({
   requires: ['BLP2.SocketManager'],
   launch: function(){
     var socket = BLP2.SocketManager.connect();
-    socket.on('connect', function(){
-      socket.send({method: 'echo', body: 'Hello World'});
+    BLP2.SocketManager.register('debug', {
+      echo: function(data){ console.log(data); },
+      alert: function(data){ alert(data.body); }
     });
   }
 });
