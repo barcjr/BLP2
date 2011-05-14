@@ -2,7 +2,6 @@ Ext.define('BLP2.ContestManager', {
   singleton: true,
   requires: ['BLP2.Contest'],
   constructor: function(){
-    alert("called");
     this.contests = {};
   },
   
