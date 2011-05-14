@@ -1,9 +1,13 @@
 Ext.define('BLP2.view.Viewport', {
   extend: 'Ext.container.Viewport',
+  requires: [
+    'Ext.layout.container.Card',
+    'BLP2.view.LogbookBrowser'
+  ],
 
-  layout: 'fit',
+  layout: 'card',
   items: [{
-    xtype: 'panel',
-    title: 'Hello World!'
+    id: 'logbook-browser',
+    xtype: 'logbook-browser'
   }]
 });

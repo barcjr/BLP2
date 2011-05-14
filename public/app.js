@@ -6,6 +6,5 @@ Ext.Loader.setConfig({
 Ext.application({
   name: 'BLP2',
   autoCreateViewport: true,
-  controllers: [],
-  launch: function(){}
+  controllers: []
 });
