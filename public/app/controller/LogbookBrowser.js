@@ -4,6 +4,7 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   stores: ['Logbooks'],
   models: ['Logbook'],
   views: ['LogbookBrowser', 'LogbookDetails'],
+  requires: ['BLP2.ContestManager'],
 
   refs: [{
     ref: 'LogbooksPanel',
@@ -22,9 +23,8 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   },
 
   onLogbookSelected: function(view, record){
-    var tab = Ext.create('BLP2.view.LogbookDetails');
-    tab.init(record);
-    this.getInformationPanel().add(tab);
-    this.getInformationPanel().setActiveTab(tab);
+    var fieldPanel = new (BLP2.ContestManager.lookup('contestID').ContactViewClass)();
+    this.getInformationPanel().add(fieldPanel);
+    this.getInformationPanel().setActiveTab(fieldPanel);
   }
 });
