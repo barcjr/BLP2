@@ -3,7 +3,7 @@ Ext.define('BLP2.controller.LogbookBrowser', {
 
   stores: ['Logbooks'],
   models: ['Logbook'],
-  views: ['LogbookBrowser'],
+  views: ['LogbookBrowser', 'LogbookDetails'],
 
   refs: [{
     ref: 'LogbooksPanel',
@@ -16,12 +16,15 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   init: function(){
     this.control({
       'logbook-browser #logbooks': {
-	select: this.onLogbookSelected
+	itemclick: this.onLogbookSelected
       }
     });
   },
 
   onLogbookSelected: function(view, record){
-    this.getInformationPanel().update('Show info on: ' + record.data.title);
+    var tab = Ext.create('BLP2.view.LogbookDetails');
+    tab.init(record);
+    this.getInformationPanel().add(tab);
+    this.getInformationPanel().setActiveTab(tab);
   }
 });

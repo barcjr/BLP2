@@ -4,6 +4,7 @@ Ext.define('BLP2.view.LogbookBrowser', {
   requires: [
     'Ext.layout.container.Border',
     'Ext.grid.Panel',
+    'Ext.tab.Panel',
     'BLP2.model.Logbook',
     'BLP2.store.Logbooks'
   ],
@@ -19,6 +20,14 @@ Ext.define('BLP2.view.LogbookBrowser', {
     title: 'Logbooks',
     store: 'Logbooks',
     preventHeader: true,
+    buttons: [{
+      text: 'Refresh'
+    }, {
+      text: 'Remove'
+    }, {
+      text: 'Add'
+    }],
+
     columns: [{
       header: 'Title',
       dataIndex: 'title',
@@ -27,8 +36,12 @@ Ext.define('BLP2.view.LogbookBrowser', {
   }, {
     id: 'information',
     region: 'center',
-    xtype: 'panel',
+    xtype: 'tabpanel',
     title: 'Information',
-    preventHeader: true
+    preventHeader: true,
+    items: [{
+      xtype: 'panel',
+      title: 'Welcome'
+    }]
   }]
 });
