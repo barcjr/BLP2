@@ -6,7 +6,7 @@ Ext.Loader.setConfig({
 Ext.application({
   name: 'BLP2',
   autoCreateViewport: true,
-  controllers: [],
+  controllers: ['LogbookBrowser'],
   requires: ['BLP2.SocketManager'],
   launch: function(){
     var socket = BLP2.SocketManager.connect();

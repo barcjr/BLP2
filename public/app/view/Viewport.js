@@ -1,8 +1,7 @@
 Ext.define('BLP2.view.Viewport', {
   extend: 'Ext.container.Viewport',
   requires: [
-    'Ext.layout.container.Card',
-    'BLP2.view.LogbookBrowser'
+    'Ext.layout.container.Card'
   ],
 
   layout: 'card',
