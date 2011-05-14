@@ -1,17 +1,22 @@
 Ext.define('BLP2.SocketManager', {
   singleton: true,
 
-  connect: function(){
-    if(typeof this.socket != 'undefined') { return this.socket; }
-    this.socket = new io.Socket();
-    this.socket.connect();
-    this.socket.on('message', function(data){ console.log(data.body); });
-    return this.socket;
+  connect: function(scope, host, options){
+    var scope = scope || "default";
+    if(typeof this.sockets == 'undefined') { this.sockets = {}; }
+    if(typeof this.sockets[scope] != 'undefined') { return this.sockets[scope]; }
+    var socket;
+    socket = new io.Socket(host, options);
+    socket.connect();
+    socket.on('message', function(data){ console.log(data.body); });
+    this.sockets[scope] = socket;
+    return socket;
   },
 
-  disconnect: function(){
-    if(typeof this.socket == 'undefined') { return; }
-    this.socket.disconnect();
-    delete this.socket;
+  disconnect: function(scope){
+    var scope = scope || "default";
+    if(typeof this.sockets[scope] == 'undefined') { return; }
+    this.sockets[scope].disconnect();
+    delete this.sockets[scope];
   }
 });
