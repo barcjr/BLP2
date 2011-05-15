@@ -37,7 +37,9 @@ Ext.define('BLP2.view.Viewport', {
     width: '25%',
     split: true,
     xtype: 'panel',
-    title: 'Logbook Entry'
+    title: 'Logbook Entry',
+    itemId: 'logbook-entry',
+    layout: 'fit'
   }, {
     region: 'center',
     xtype: 'tabpanel',

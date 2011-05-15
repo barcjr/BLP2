@@ -8,6 +8,9 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   refs: [{
     ref: 'informationPanel',
     selector: 'viewport #main'
+  },{
+    ref: 'logbookEntry',
+    selector: 'viewport #logbook-entry'
   }],
 
   init: function(){
@@ -28,8 +31,8 @@ Ext.define('BLP2.controller.LogbookBrowser', {
 
   onLogbookSelected: function(view, record){
     var fieldPanel = new (BLP2.ContestManager.lookup('contestID').ContactViewClass)();
-    this.getInformationPanel().add(fieldPanel);
-    this.getInformationPanel().setActiveTab(fieldPanel);
+    this.getLogbookEntry().removeAll(fieldPanel);
+    this.getLogbookEntry().add(fieldPanel);
     this.window.close();
   }
 });
