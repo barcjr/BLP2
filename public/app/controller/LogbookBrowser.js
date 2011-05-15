@@ -14,9 +14,13 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   }],
 
   init: function(){
+    var me = this;
     this.control({
       'viewport > #menubar > #change-logbook': {
 	click: this.showLogbookBrowser
+      },
+      'logbook-browser': {
+	destroy: function(){ delete me.window; }
       },
       'logbook-browser gridpanel': {
 	itemclick: this.onLogbookSelected
@@ -25,7 +29,10 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   },
   
   showLogbookBrowser: function(){
-    this.window = new BLP2.view.LogbookBrowser({width: '90%', height: '90%'});
+    if(!this.hasOwnProperty('window')) {
+      this.window = new BLP2.view.LogbookBrowser({width: '90%', height: '90%'});
+    }
+
     this.window.show();
   },
 
