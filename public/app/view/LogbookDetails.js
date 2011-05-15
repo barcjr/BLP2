@@ -1,9 +1,13 @@
 Ext.define('BLP2.view.LogbookDetails', {
   extend: 'Ext.panel.Panel',
+  alias: 'widget.logbook-details',
 
-  closable: true,
+  border: false,
+  buttons: [{
+    text: "Open"
+  }],
 
   init: function(record){
-    this.setTitle(record.data.title);
+    this.update('Info for: ' + record.data.title);
   }
 });

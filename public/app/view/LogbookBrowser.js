@@ -3,6 +3,7 @@ Ext.define('BLP2.view.LogbookBrowser', {
   alias: 'widget.logbook-browser',
   requires: [
     'Ext.layout.container.Border',
+    'Ext.layout.container.Fit',
     'Ext.grid.Panel',
     'BLP2.store.Logbooks'
   ],
@@ -30,6 +31,7 @@ Ext.define('BLP2.view.LogbookBrowser', {
     region: 'center',
     xtype: 'panel',
     itemId: 'info',
+    layout: 'fit',
     title: 'Information',
     preventHeader: true
   }]

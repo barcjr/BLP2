@@ -2,7 +2,7 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   extend: 'Ext.app.Controller',
   
   stores: ['Logbooks'],
-  views: ['LogbookBrowser'],
+  views: ['LogbookBrowser', 'LogbookDetails'],
   requires: ['BLP2.ContestManager'],
 
   refs: [{
@@ -25,6 +25,9 @@ Ext.define('BLP2.controller.LogbookBrowser', {
       'logbook-browser gridpanel': {
 	select: this.onLogbookSelected,
 	itemdblclick: this.onLogbookDoubleClick
+      },
+      'logbook-details button': {
+	click: this.onLogbookOpen
       }
     });
   },
@@ -38,7 +41,11 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   },
 
   onLogbookSelected: function(view, record){
-    this.window.query('#info')[0].update('Show info on ' + record.data.title);
+    var infoPanel = this.window.query("#info")[0];
+    var detailsPanel = new BLP2.view.LogbookDetails();
+    detailsPanel.init(record);
+    infoPanel.removeAll();
+    infoPanel.add(detailsPanel);
   },
 
   onLogbookDoubleClick: function(view, record){
@@ -46,5 +53,10 @@ Ext.define('BLP2.controller.LogbookBrowser', {
     this.getLogbookEntry().removeAll(fieldPanel);
     this.getLogbookEntry().add(fieldPanel);
     this.window.close();
+  },
+
+  onLogbookOpen: function() {
+    var record = this.window.query('gridpanel')[0].selected;
+    this.onLogbookDoubleClick(null, record);
   }
 });
