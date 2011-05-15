@@ -41,6 +41,7 @@ Ext.define('BLP2.view.Viewport', {
   }, {
     region: 'center',
     xtype: 'tabpanel',
+    itemId: 'main',
     items: [{
       xtype: 'panel',
       title: 'Introduction'

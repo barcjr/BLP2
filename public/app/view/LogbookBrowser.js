@@ -1,5 +1,6 @@
 Ext.define('BLP2.view.LogbookBrowser', {
   extend: 'Ext.window.Window',
+  alias: 'widget.logbook-browser',
   requires: [
     'Ext.layout.container.Border',
     'Ext.grid.Panel',
@@ -8,6 +9,7 @@ Ext.define('BLP2.view.LogbookBrowser', {
 
   title: 'Logbook Browser',
   layout: 'border',
+  constrainHeader: true,
 
   items: [{
     region: 'west',
