@@ -23,7 +23,8 @@ Ext.define('BLP2.controller.LogbookBrowser', {
 	destroy: function(){ delete me.window; }
       },
       'logbook-browser gridpanel': {
-	itemclick: this.onLogbookSelected
+	select: this.onLogbookSelected,
+	itemdblclick: this.onLogbookDoubleClick
       }
     });
   },
@@ -37,6 +38,10 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   },
 
   onLogbookSelected: function(view, record){
+    this.window.query('#info')[0].update('Show info on ' + record.data.title);
+  },
+
+  onLogbookDoubleClick: function(view, record){
     var fieldPanel = new (BLP2.ContestManager.lookup('contestID').ContactViewClass)();
     this.getLogbookEntry().removeAll(fieldPanel);
     this.getLogbookEntry().add(fieldPanel);

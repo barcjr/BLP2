@@ -28,6 +28,7 @@ Ext.define('BLP2.view.LogbookBrowser', {
   }, {
     region: 'center',
     xtype: 'panel',
+    itemId: 'info',
     title: 'Information',
     preventHeader: true
   }]

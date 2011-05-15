@@ -22,6 +22,7 @@ Ext.define('BLP2.view.Viewport', {
   }, {
     region: 'south',
     xtype: 'toolbar',
+    itemId: 'statusbar',
     items: [{
       xtype: 'tbtext',
       text: 'Status goes here!'
