@@ -19,6 +19,7 @@ Ext.define('BLP2.view.LogbookBrowser', {
     title: 'Logbooks',
     store: 'Logbooks',
     preventHeader: true,
+    hideHeaders: true,
 
     columns: [{
       header: 'Title',
