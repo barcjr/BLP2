@@ -1,12 +1,47 @@
 Ext.define('BLP2.view.Viewport', {
   extend: 'Ext.container.Viewport',
   requires: [
-    'Ext.layout.container.Card'
+    'Ext.layout.container.Border',
+    'Ext.tab.Panel',
+    'Ext.toolbar.TextItem',
+    'Ext.toolbar.Toolbar',
+    'Ext.toolbar.Spacer'
   ],
 
-  layout: 'card',
+  layout: 'border',
   items: [{
-    id: 'logbook-browser',
-    xtype: 'logbook-browser'
+    region: 'north',
+    xtype: 'toolbar',
+    items: [{
+      xtype: 'tbfill'
+    }, {
+      text: 'Change Logbook'
+    }]
+  }, {
+    region: 'south',
+    xtype: 'toolbar',
+    items: [{
+      xtype: 'tbtext',
+      text: 'Status goes here!'
+    }]
+  }, {
+    region: 'west',
+    width: '25%',
+    split: true,
+    xtype: 'panel',
+    title: 'Waterfall Panel'
+  }, {
+    region: 'east',
+    width: '25%',
+    split: true,
+    xtype: 'panel',
+    title: 'Logbook Entry'
+  }, {
+    region: 'center',
+    xtype: 'tabpanel',
+    items: [{
+      xtype: 'panel',
+      title: 'Introduction'
+    }]
   }]
 });
