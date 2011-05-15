@@ -22,13 +22,14 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   },
   
   showLogbookBrowser: function(){
-    var browser = new BLP2.view.LogbookBrowser({width: '90%', height: '90%'});
-    browser.show();
+    this.window = new BLP2.view.LogbookBrowser({width: '90%', height: '90%'});
+    this.window.show();
   },
 
   onLogbookSelected: function(view, record){
     var fieldPanel = new (BLP2.ContestManager.lookup('contestID').ContactViewClass)();
     this.getInformationPanel().add(fieldPanel);
     this.getInformationPanel().setActiveTab(fieldPanel);
+    this.window.close();
   }
 });
