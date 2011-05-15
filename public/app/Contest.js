@@ -34,8 +34,12 @@ Ext.define('BLP2.Contest', {
       defaults: {
 	margin: 6,
 	padding: 6
-      }
-      
+      },
+      buttons: [{
+	text: 'Clear',
+      }, {
+	text: 'Log',
+      }]
     };
     var exchangeViewMap = {
       xtype: 'fieldset',
