@@ -1,7 +1,11 @@
 Ext.define('BLP2.Contest', {
-  requires: ['Ext.layout.container.Anchor',
-  'Ext.form.FieldSet',
-  'Ext.form.field.Text'],
+  requires: [
+    'Ext.layout.container.Anchor',
+    'Ext.layout.container.HBox',
+    'Ext.form.FieldSet',
+    'Ext.form.FieldContainer',
+    'Ext.form.field.Text'
+  ],
   constructor: function(contestID, contestDef){
     this.generateModelClass(this.generateModelMap(contestDef));
     this.generateViewClass(this.generateViewMap(contestDef));
@@ -10,8 +14,7 @@ Ext.define('BLP2.Contest', {
   generateModelMap: function(contestDef){
     var contactsModelMap = {
       extend: 'Ext.data.Model',
-      fields: [],
-      
+      fields: []
     };
     Ext.each(contestDef['exchangeFields'], function(field,index){
       contactsModelMap['fields'].push({name: contactsModelMap[index], type: 'string'});
@@ -26,7 +29,12 @@ Ext.define('BLP2.Contest', {
       extend: 'Ext.panel.Panel',
       items: [],
       layout: 'anchor',
-      autoScroll: true
+      autoScroll: true,
+      border: false,
+      defaults: {
+	margin: 6,
+	padding: 6
+      }
       
     };
     var exchangeViewMap = {
@@ -59,30 +67,38 @@ Ext.define('BLP2.Contest', {
     };
     
     var otherViewMap = {
-        xtype: 'fieldset',
-        columnWidth: 0.5,
-        title: 'Other',
-        defaultType: 'textfield',
-        defaults: {
-            anchor: '100%'
-        },
-        layout: 'anchor',
-        items: [{
-            xtype: 'textfield',
-            fieldLabel: 'Band',
-        },
-        {
-            xtype: 'textfield',
-            fieldLabel: 'Mode',
-        },
-        {
-            xtype: 'textfield',
-            fieldLabel: 'Frequency',
-        },
-        {
-            xtype: 'textfield',
-            fieldLabel: 'Time',
-        }]
+      xtype: 'fieldset',
+      columnWidth: 0.5,
+      title: 'Other',
+      defaultType: 'textfield',
+      defaults: {
+        anchor: '100%'
+      },
+      layout: 'anchor',
+      items: [{
+	xtype: 'fieldcontainer',
+	layout: 'hbox',
+	fieldLabel: 'Band/Mode',
+	items: [{
+          xtype: 'textfield',
+          fieldLabel: 'Band',
+	  hideLabel: true,
+	  flex: 1
+        }, {
+	  xtype: 'splitter',
+	}, {
+	  xtype: 'textfield',
+	  fieldLabel: 'Mode',
+	  hideLabel: true,
+	  flex: 1
+	}]
+      } , {
+	xtype: 'textfield',
+	fieldLabel: 'Frequency',
+      }, {
+	xtype: 'textfield',
+	fieldLabel: 'Time',
+      }]
     };
     
     Ext.each(contestDef['exchangeFields'], function(field,index){
