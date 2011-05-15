@@ -7,4 +7,6 @@ Ext.define('BLP2.store.Logbooks', {
   data: [{
     title: 'BARC Jr. Field Day 2011'
   }]
+}, function(){
+  //new BLP2.store.Logbooks({storeId: 'Logbooks'});
 });

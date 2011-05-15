@@ -1,30 +1,19 @@
 Ext.define('BLP2.controller.LogbookBrowser', {
   extend: 'Ext.app.Controller',
-
+  
   stores: ['Logbooks'],
-  models: ['Logbook'],
-  views: ['LogbookBrowser', 'LogbookDetails'],
-
-  refs: [{
-    ref: 'LogbooksPanel',
-    selector: 'logbook-browser #logbooks'
-  }, {
-    ref: 'InformationPanel',
-    selector: 'logbook-browser #information'
-  }],
+  views: ['LogbookBrowser'],
 
   init: function(){
     this.control({
-      'logbook-browser #logbooks': {
-	itemclick: this.onLogbookSelected
+      'viewport > #menubar > #change-logbook': {
+	click: this.showLogbookBrowser
       }
     });
   },
-
-  onLogbookSelected: function(view, record){
-    var tab = Ext.create('BLP2.view.LogbookDetails');
-    tab.init(record);
-    this.getInformationPanel().add(tab);
-    this.getInformationPanel().setActiveTab(tab);
+  
+  showLogbookBrowser: function(){
+    var browser = new BLP2.view.LogbookBrowser({width: '90%', height: '90%'});
+    browser.show();
   }
 });

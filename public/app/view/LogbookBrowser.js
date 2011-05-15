@@ -1,32 +1,22 @@
 Ext.define('BLP2.view.LogbookBrowser', {
-  extend: 'Ext.panel.Panel',
-  alias: 'widget.logbook-browser',
+  extend: 'Ext.window.Window',
   requires: [
     'Ext.layout.container.Border',
     'Ext.grid.Panel',
-    'Ext.tab.Panel',
-    'BLP2.model.Logbook',
     'BLP2.store.Logbooks'
   ],
 
+  title: 'Logbook Browser',
   layout: 'border',
+
   items: [{
-    id: 'logbooks',
     region: 'west',
     width: '25%',
     split: true,
-    collapsible: true,
     xtype: 'gridpanel',
     title: 'Logbooks',
     store: 'Logbooks',
     preventHeader: true,
-    buttons: [{
-      text: 'Refresh'
-    }, {
-      text: 'Remove'
-    }, {
-      text: 'Add'
-    }],
 
     columns: [{
       header: 'Title',
@@ -34,14 +24,9 @@ Ext.define('BLP2.view.LogbookBrowser', {
       flex: 1
     }]
   }, {
-    id: 'information',
     region: 'center',
-    xtype: 'tabpanel',
+    xtype: 'panel',
     title: 'Information',
-    preventHeader: true,
-    items: [{
-      xtype: 'panel',
-      title: 'Welcome'
-    }]
+    preventHeader: true
   }]
 });

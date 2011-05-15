@@ -12,9 +12,11 @@ Ext.define('BLP2.view.Viewport', {
   items: [{
     region: 'north',
     xtype: 'toolbar',
+    itemId: 'menubar',
     items: [{
       xtype: 'tbfill'
     }, {
+      itemId: 'change-logbook',
       text: 'Change Logbook'
     }]
   }, {
