@@ -25,7 +25,8 @@ Ext.define('BLP2.Contest', {
     var viewPanel = {
       extend: 'Ext.panel.Panel',
       items: [],
-      layout: 'anchor'
+      layout: 'anchor',
+      autoScroll: true
       
     };
     var exchangeViewMap = {
