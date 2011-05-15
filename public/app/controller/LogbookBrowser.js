@@ -11,6 +11,9 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   },{
     ref: 'logbookEntry',
     selector: 'viewport #logbook-entry'
+  }, {
+    ref: 'viewport',
+    selector: 'viewport'
   }],
 
   init: function(){
@@ -34,7 +37,11 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   
   showLogbookBrowser: function(){
     if(!this.hasOwnProperty('window')) {
-      this.window = new BLP2.view.LogbookBrowser({width: '90%', height: '90%'});
+      var size = {
+	width: (this.getViewport().getWidth() * 0.75),
+	height: (this.getViewport().getHeight() * 0.75)
+      };
+      this.window = Ext.create('BLP2.view.LogbookBrowser', size);
     }
 
     this.window.show();
@@ -42,7 +49,7 @@ Ext.define('BLP2.controller.LogbookBrowser', {
 
   onLogbookSelected: function(view, record){
     var infoPanel = this.window.query("#info")[0];
-    var detailsPanel = new BLP2.view.LogbookDetails();
+    var detailsPanel = Ext.create('BLP2.view.LogbookDetails');
     detailsPanel.init(record);
     infoPanel.removeAll();
     infoPanel.add(detailsPanel);

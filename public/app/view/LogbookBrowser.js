@@ -33,6 +33,9 @@ Ext.define('BLP2.view.LogbookBrowser', {
     itemId: 'info',
     layout: 'fit',
     title: 'Information',
-    preventHeader: true
+    preventHeader: true,
+    items: [{
+      xtype: 'container'
+    }]
   }]
 });
