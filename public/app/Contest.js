@@ -25,7 +25,7 @@ Ext.define('BLP2.Contest', {
     var viewPanel = {
       extend: 'Ext.panel.Panel',
       items: [],
-      layout: 'fit'
+      layout: 'anchor'
       
     };
     var exchangeViewMap = {
@@ -38,8 +38,50 @@ Ext.define('BLP2.Contest', {
       items:[],
       
     };
-    var contactsViewMap = {
-      layout: 'anchor'
+    
+    var peopleViewMap = {
+      xtype: 'fieldset',
+      title: 'People',
+      layout: 'anchor',
+      defaults:{ 
+        anchor: '100%'
+      },
+      items:[{
+        xtype: 'textfield',
+        fieldLabel: 'Operator'
+      },  {
+          xtype: 'textfield',
+          fieldLabel: 'Logger'
+        },
+      
+      ]
+    };
+    
+    var otherViewMap = {
+        xtype: 'fieldset',
+        columnWidth: 0.5,
+        title: 'Other',
+        defaultType: 'textfield',
+        defaults: {
+            anchor: '100%'
+        },
+        layout: 'anchor',
+        items: [{
+            xtype: 'textfield',
+            fieldLabel: 'Band',
+        },
+        {
+            xtype: 'textfield',
+            fieldLabel: 'Mode',
+        },
+        {
+            xtype: 'textfield',
+            fieldLabel: 'Frequency',
+        },
+        {
+            xtype: 'textfield',
+            fieldLabel: 'Time',
+        }]
     };
     
     Ext.each(contestDef['exchangeFields'], function(field,index){
@@ -49,8 +91,9 @@ Ext.define('BLP2.Contest', {
       });
     });
     
-    exchangeViewMap['items'].push(contactsViewMap);
     viewPanel['items'].push(exchangeViewMap);
+    viewPanel['items'].push(peopleViewMap);
+    viewPanel['items'].push(otherViewMap);
     return viewPanel;
   },
   generateViewClass: function(viewModelMap){
