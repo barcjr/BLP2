@@ -108,7 +108,22 @@ Ext.define('BLP2.Contest', {
     Ext.each(contestDef['exchangeFields'], function(field,index){
       exchangeViewMap['items'].push({
         xtype: field['type'],
-        fieldLabel: field['label']
+        fieldLabel: field['label'],
+        listeners: {
+          specialkey: function(field, e){
+            if(e.getKey() == e.TAB){
+              var next;
+              if(e.shiftKey){
+                var last = field.up().query('field');
+                next = field.previousSibling() || last[last.length - 1];
+              } else {
+                next = field.nextSibling() || field.up().down('field');
+              }
+              next.focus();
+              e.stopEvent();
+            }
+          }
+        }
       });
     });
     
