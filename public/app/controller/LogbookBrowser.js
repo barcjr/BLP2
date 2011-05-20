@@ -56,7 +56,8 @@ Ext.define('BLP2.controller.LogbookBrowser', {
   },
 
   onLogbookDoubleClick: function(view, record){
-    var fieldPanel = new (BLP2.ContestManager.lookup('contestID').ContactViewClass)();
+    //var fieldPanel = new (BLP2.ContestManager.lookup('contestID').ContactViewClass)();
+    var fieldPanel = BLP2.ContestManager.getContestEntry('contestId');
     this.getLogbookEntry().removeAll(fieldPanel);
     this.getLogbookEntry().add(fieldPanel);
     this.window.close();
