@@ -1,5 +1,5 @@
 Ext.define('BLP2.view.ContactEntry', {
-  extend: 'Ext.panel.Panel',
+  extend: 'Ext.form.Panel',
   requires: [
     'Ext.form.FieldSet',
     'Ext.form.FieldContainer',
@@ -23,6 +23,9 @@ Ext.define('BLP2.view.ContactEntry', {
   },
   buttons: [{
     text: 'Clear',
+    handler: function(){
+      this.up('form').getForm().reset();
+    }
   }, {
     text: 'Log',
   }],
