@@ -2,14 +2,14 @@ Ext.define('BLP2.ContestManager', {
   singleton: true,
   requires: [
     'BLP2.Contest',
-    'BLP2.view.ContestEntry'
+    'BLP2.view.ContactEntry'
   ],
   constructor: function(){
     this.contests = {};
   },
   
-  getContestEntry: function(contestId){
-    var panel = Ext.create('BLP2.view.ContestEntry');
+  getContactEntry: function(contestId){
+    var panel = Ext.create('BLP2.view.ContactEntry');
     panel.init({
       "id": "ARRLFieldDay",
       "name": "ARRL Field Day",

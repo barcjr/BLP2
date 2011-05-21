@@ -1,4 +1,4 @@
-Ext.define('BLP2.view.ContestEntry', {
+Ext.define('BLP2.view.ContactEntry', {
   extend: 'Ext.panel.Panel',
   requires: [
     'Ext.form.FieldSet',
